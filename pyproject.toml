@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "saleor-sdk-python"
+version = "0.0.1"
+description = ""
+authors = ["Paweł Kucmus <pawel.kucmus@mirumee.com>"]
+readme = "README.md"
+packages = [{include = "saleor_sdk", from = "src"}]
+
+
+[tool.poetry.scripts]
+saleor-sdk = 'saleor_sdk.console.app:cli'
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+tomli = "^2"
+pydantic = "^1"
+pyjwt = "^2"
+cryptography = "^38"
+click = "^8"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7"
+pytest-asyncio = "^0"
+mypy = "^0"
+ipdb = "^0"
+black = "^22"
+isort = "^5"
+flake8 = "^6"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^8"
+mdx-include = "^1.4.2"
+pygments-graphql = "^1.0.0"
+mkdocs-awesome-pages-plugin = "^2.8.0"
+
+
+[tool.poetry.group.examples.dependencies]
+httpx = "^0"
+fastapi = "^0.88"
+uvicorn = "^0"
+
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+
+[tool.isort]
+profile = "black"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
