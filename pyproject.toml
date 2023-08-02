@@ -24,7 +24,7 @@ python = "^3.9"
 tomli = "^2"
 pydantic = "^1"
 pyjwt = "^2"
-cryptography = "^39"
+cryptography = ">=39,<42"
 click = "^8"
 
 
