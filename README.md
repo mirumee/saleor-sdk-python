@@ -6,23 +6,7 @@ Documentation, contribution rules, process and the code itself (this includes th
 
 ## Installation
 
-Install [Poetry](https://python-poetry.org/docs/#installing-with-pipx).
-
-Clone the repository and invoke:
-
-```
-poetry install
-```
-
-## Documentation
-
-In the Poetry shell (`poetry shell` after installing the dependencies), run:
-
-```
-mkdocs serve
-```
-
-and navigate to http://127.0.0.1:8000
+Install [Hatch](https://hatch.pypa.io/latest/install/#pipx).
 
 ## Tooling
 
@@ -40,4 +24,25 @@ saleor_sdk tools
 ```sh
 saleor-sdk tools decode-id VXNlcjoyMg==
 saleor-sdk tools encode-id User 22
+```
+
+## Documentation
+
+```
+hatch run docs:serve
+```
+
+and navigate to http://127.0.0.1:8000
+
+## Tests
+
+```
+hatch run test 
+```
+
+## Build and deploy
+
+```
+hatch build -c
+hatch publish
 ```
