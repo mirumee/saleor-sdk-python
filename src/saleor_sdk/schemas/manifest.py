@@ -1,6 +1,6 @@
 from typing import List, Union, Optional
 
-from pydantic import BaseModel, Field, AnyHttpUrl
+from pydantic import BaseModel, Field, AnyHttpUrl, ConfigDict
 
 from saleor_sdk.schemas.enums import (
     Permission,
@@ -12,17 +12,18 @@ from saleor_sdk.schemas.enums import (
 
 
 class Extension(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     label: str
     mount: Union[str, MountType]
     target: Union[str, TargetType]
     permissions: List[str]
     url: AnyHttpUrl
 
-    class Config:
-        allow_population_by_field_name = True
-
 
 class Webhook(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     name: str
     async_events: Optional[List[Union[str, WebhookAsyncEvents]]] = Field(default_factory=list, alias="asyncEvents")
     sync_events: Optional[List[Union[str, WebhookSyncEvents]]] = Field(default_factory=list, alias="syncEvents")
@@ -30,11 +31,11 @@ class Webhook(BaseModel):
     target_url: AnyHttpUrl = Field(..., alias="targetUrl")
     is_active: bool = Field(..., alias="isActive")
 
-    class Config:
-        allow_population_by_field_name = True
 
 
 class Manifest(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     id: str
     version: str
     name: str
@@ -57,6 +58,3 @@ class Manifest(BaseModel):
 
     extensions: Optional[List[Extension]] = Field(default_factory=list)
     webhooks: Optional[List[Webhook]] = Field(default_factory=list)
-
-    class Config:
-        allow_population_by_field_name = True
