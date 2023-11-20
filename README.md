@@ -46,3 +46,10 @@ hatch run test
 hatch build -c
 hatch publish
 ```
+
+## Code style
+
+```
+hatch run lint:fmt
+hatch run lint:all
+```

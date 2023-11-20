@@ -155,7 +155,7 @@ And an additional endpoint that could be used by the Dashboard UI to for example
 Install the `examples` dependencies with:
 
 ```
-poetry install --with=examples
+hatch -e examples shell
 ```
 
 Then navigate to the example and run it with uvicorn:
