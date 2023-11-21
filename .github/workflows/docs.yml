@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+env:
+  STABLE_PYTHON_VERSION: '3.11'
+  PYTHONUNBUFFERED: "1"
+  FORCE_COLOR: "1"
+  
 permissions:
   contents: write
 
