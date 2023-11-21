@@ -28,4 +28,4 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install hatch 
-      - run: hatch docs:deploy
+      - run: hatch run docs:deploy
