@@ -66,7 +66,7 @@ python = ["3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.docs]
 dependencies = [
-    "mkdocs-material~=8.0",
+    "mkdocs-material~=9.0",
     "mdx-include~=1.4.2",
     "pygments-graphql~=1.0.0",
     "mkdocs-awesome-pages-plugin~=2.8.0",
@@ -74,6 +74,7 @@ dependencies = [
 [tool.hatch.envs.docs.scripts]
 build = "mkdocs build --clean --strict"
 serve = "mkdocs serve --dev-addr localhost:8000"
+deploy = "mkdocs gh-deploy --force"
 
 [tool.hatch.envs.lint]
 dependencies = [
