@@ -6,10 +6,10 @@ from jwt.exceptions import InvalidSignatureError
 
 from saleor_sdk.crypto.exceptions import JWKSKeyMissing
 from saleor_sdk.crypto.utils import (
-    get_key_from_jwks,
-    jwt_global_obj,
     decode_jwt,
     decode_webook_payload,
+    get_key_from_jwks,
+    jwt_global_obj,
 )
 
 

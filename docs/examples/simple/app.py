@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Depends, Header
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 import httpx
 from jwt.api_jwk import PyJWKSet
 
@@ -25,14 +25,14 @@ async def manifest(request: Request):
         version="0.0.0",
         name="Simple SDK Test APP",
         permissions=[Permission.MANAGE_ORDERS, "MANAGE_CHECKOUTS"],
-        app_url=request.url_for("app_config"),
-        token_target_url=request.url_for("register"),
+        app_url=str(request.url_for("app_config")),
+        token_target_url=str(request.url_for("register")),
         webhooks=[
             Webhook(
                 name="Order Handler",
                 async_events=[WebhookAsyncEvents.ORDER_CREATED, "ORDER_UPDATED"],
                 query="subscription { event { issuedAt issuingPrincipal { ... on App { id } ... on User { id } } ... on OrderCreated { order { id }} ... on OrderUpdated { order { id }}}}",
-                target_url=request.url_for("order_handler"),
+                target_url=str(request.url_for("order_handler")),
                 is_active=True,
             )
         ],
