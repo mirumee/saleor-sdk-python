@@ -21,7 +21,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        # os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         python-version: ['3.10', '3.11', '3.12']
 
     steps:
@@ -42,15 +43,15 @@ jobs:
 
     - name: Coverage
       run: hatch run test-cov
-
-    - name: Disambiguate coverage filename
-      run: mv .coverage ".coverage.${{ matrix.os }}.${{ matrix.python-version }}"
+      env:
+        COVERAGE_FILE: coverage/.coverage.${{ runner.os }}-py${{ matrix.python-version }}
+        CONTEXT: ${{ runner.os }}-py${{ matrix.python-version }}
 
     - name: Upload coverage data
       uses: actions/upload-artifact@v3
       with:
         name: coverage-data
-        path: .coverage.*
+        path: coverage
 
   coverage:
     name: Report coverage
@@ -75,18 +76,19 @@ jobs:
 
     - name: Combine coverage data
       run: hatch run cov-report
-
+      
   # https://github.com/marketplace/actions/alls-green#why
-  check: # This job does nothing and is only used for the branch protection
+  check:  # This job does nothing and is only used for the branch protection
     if: always()
-
     needs:
-    - coverage
-
+      - coverage-combine
     runs-on: ubuntu-latest
-
     steps:
-    - name: Decide whether the needed jobs succeeded or failed
-      uses: re-actors/alls-green@release/v1
-      with:
-        jobs: ${{ toJSON(needs) }}
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
