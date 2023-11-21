@@ -1,16 +1,16 @@
 import logging
 
 from saleor_sdk.marina.client import AbstractSaleorClient
-from saleor_sdk.marina.config import SaleorConfigProvider
+from saleor_sdk.marina.config import AbstractSaleorConfigProvider
 from saleor_sdk.marina.exceptions import SaleorAppInstallationProblem
-from saleor_sdk.marina.jwks import JWKSProvider
+from saleor_sdk.marina.jwks import AbstractJWKSProvider
 
 LOGGER = logging.getLogger(__name__)
 
 
 async def install_app(
-    config_provider: SaleorConfigProvider,
-    jwks_provider: JWKSProvider,
+    config_provider: AbstractSaleorConfigProvider,
+    jwks_provider: AbstractJWKSProvider,
     saleor_client: AbstractSaleorClient,
     saleor_domain: str,
     saleor_url: str,

@@ -3,15 +3,15 @@ import abc
 from jwt.api_jwk import PyJWKSet
 
 
-class JWKSClient(abc.ABC):
+class AbstractJWKSClient(abc.ABC):
     @abc.abstractmethod
     async def fetch_jwks(self) -> str:
         """Fetch the JWKS from server and return a JSON string containing the JWKS"""
 
 
-class JWKSProvider(abc.ABC):
+class AbstractJWKSProvider(abc.ABC):
     @abc.abstractmethod
-    def __init__(self, jwks_service: JWKSClient):
+    def __init__(self, jwks_service: AbstractJWKSClient):
         self.jwks_service = jwks_service
 
     @abc.abstractmethod

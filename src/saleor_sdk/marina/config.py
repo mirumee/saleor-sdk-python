@@ -9,7 +9,7 @@ class SaleorConfigData:
     auth_token: str
 
 
-class SaleorConfigProvider(abc.ABC):
+class AbstractSaleorConfigProvider(abc.ABC):
     @abc.abstractmethod
     async def get_by_saleor_domain(
         self,

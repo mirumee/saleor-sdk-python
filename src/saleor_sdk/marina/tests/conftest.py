@@ -9,8 +9,8 @@ from jwt.algorithms import RSAAlgorithm
 from jwt.api_jwk import PyJWKSet
 
 from saleor_sdk.marina.client import AbstractSaleorClient
-from saleor_sdk.marina.config import SaleorConfigData, SaleorConfigProvider
-from saleor_sdk.marina.jwks import JWKSClient, JWKSProvider
+from saleor_sdk.marina.config import AbstractSaleorConfigProvider, SaleorConfigData
+from saleor_sdk.marina.jwks import AbstractJWKSClient, AbstractJWKSProvider
 
 
 @pytest.fixture(scope="session")
@@ -68,7 +68,7 @@ def fake_saleor_jwt(fake_saleor_jwt_payload, private_key, kid):
 
 @pytest.fixture(scope="session")
 def fake_jwks_service(fake_jwks):
-    class FakeJWKSService(JWKSClient):
+    class FakeJWKSService(AbstractJWKSClient):
         async def fetch_jwks(self) -> str:
             return json.dumps(fake_jwks)
 
@@ -77,8 +77,8 @@ def fake_jwks_service(fake_jwks):
 
 @pytest.fixture(scope="session")
 def fake_jwks_provider(fake_jwks_service):
-    class FakeJWKSProvider(JWKSProvider):
-        def __init__(self, jwks_service: JWKSClient):
+    class FakeJWKSProvider(AbstractJWKSProvider):
+        def __init__(self, jwks_service: AbstractJWKSClient):
             super().__init__(jwks_service)
             self.jwks_cache = {}
 
@@ -104,7 +104,7 @@ def saleor_config():
 
 @pytest.fixture()
 def fake_saleor_config_provider(saleor_config):
-    class FakeSaleorConfigProvider(SaleorConfigProvider):
+    class FakeSaleorConfigProvider(AbstractSaleorConfigProvider):
         def __init__(self):
             self.saleor_config = saleor_config
 

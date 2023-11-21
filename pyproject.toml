@@ -9,7 +9,7 @@ exclude = ["tests"]
 
 [project]
 name = "saleor-sdk-python"
-version = "0.2.0"
+version = "0.2.1"
 description = "A set of helpers and tools for a Saleor related Python project."
 authors = [{ name = "Mirumee Software", email = "hello@mirumee.com" }]
 readme = "README.md"

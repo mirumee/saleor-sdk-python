@@ -6,12 +6,12 @@ from jwt.exceptions import InvalidTokenError
 from saleor_sdk.crypto.exceptions import JWKSKeyMissing
 from saleor_sdk.crypto.utils import decode_jwt, decode_webook_payload
 from saleor_sdk.marina.exceptions import Unauthorized
-from saleor_sdk.marina.jwks import JWKSProvider
+from saleor_sdk.marina.jwks import AbstractJWKSProvider
 
 
 async def decode_saleor_jwt(
     jwt: str,
-    jwks_provider: JWKSProvider,
+    jwks_provider: AbstractJWKSProvider,
     force_refresh: bool = False,
 ) -> Any:
     unverified_paylod = jwt_decode(jwt=jwt, options={"verify_signature": False})
@@ -33,7 +33,7 @@ async def verify_webhook_signature(
     payload: bytes,
     jws: str,
     issuer: str,  # comes from Saleor-Api-Url header and its the same as iss in JWT
-    jwks_provider: JWKSProvider,
+    jwks_provider: AbstractJWKSProvider,
     force_refresh: bool = False,
 ) -> Any:
     saleor_jwks = await jwks_provider.get(issuer=issuer, force_refresh=force_refresh)
