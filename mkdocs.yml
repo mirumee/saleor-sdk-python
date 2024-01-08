@@ -1,9 +1,13 @@
 site_name: Saleor SDK Python
 repo_url: https://github.com/mirumee/saleor-sdk-python
 edit_uri: edit/main/docs/
+copyright: Copyright &copy; 2024 - Mirumee Software
 
 theme:
+  logo: /assets/marina_logo_white.svg
+  favicon: /assets/marina_logo.svg
   name: material
+  custom_dir: docs/overrides
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"

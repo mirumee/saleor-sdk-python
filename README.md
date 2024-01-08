@@ -6,7 +6,9 @@ Documentation, contribution rules, process and the code itself (this includes th
 
 ## Installation
 
-Install [Hatch](https://hatch.pypa.io/latest/install/#pipx).
+```
+pip install saleor-sdk-python
+```
 
 ## Tooling
 
@@ -26,7 +28,11 @@ saleor-sdk tools decode-id VXNlcjoyMg==
 saleor-sdk tools encode-id User 22
 ```
 
-## Documentation
+## Development
+
+Install [Hatch](https://hatch.pypa.io/latest/install/#pipx).
+
+### Documentation
 
 ```
 hatch run docs:serve
@@ -34,20 +40,20 @@ hatch run docs:serve
 
 and navigate to http://127.0.0.1:8000
 
-## Tests
+### Tests
 
 ```
 hatch run test 
 ```
 
-## Build and deploy
+### Build and deploy
 
 ```
 hatch build -c
 hatch publish
 ```
 
-## Code style
+### Code style
 
 ```
 hatch run lint:fmt
