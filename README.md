@@ -30,9 +30,13 @@ saleor-sdk tools encode-id User 22
 
 ## Development
 
+To contribute to this repository you will need Hatch to setup a local development environment. 
+
 Install [Hatch](https://hatch.pypa.io/latest/install/#pipx).
 
 ### Documentation
+
+You can deploy a local documentation service, it reloads changes and allow for a live preview of how the documentation will look like after publication:
 
 ```
 hatch run docs:serve
@@ -42,20 +46,27 @@ and navigate to http://127.0.0.1:8000
 
 ### Tests
 
+With the following command you can run tests: 
+
 ```
 hatch run test 
 ```
 
-### Build and deploy
-
-```
-hatch build -c
-hatch publish
-```
-
 ### Code style
+
+This library follows a specific style guide, to achieve the proper format and lint the code the following commands should be used:
 
 ```
 hatch run lint:fmt
 hatch run lint:all
+```
+
+
+### Build and deploy
+
+This is done by a CI/CD workflow upon the creation of a release but in case of the need for a manual publication of the packager to PyPI you need to build the package archive and publish it. 
+
+```
+hatch build -c
+hatch publish
 ```

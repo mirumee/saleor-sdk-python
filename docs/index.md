@@ -18,8 +18,8 @@ pip install saleor-sdk-python
 
 ## Key features
 
-- CLI with tooling that helps to decode Saleor IDs
-- Crypto module helping with Saleor authentication, both JWT verification and webhook signature verification
+- CLI with tooling that helps to decode and encode Saleor IDs - this is useful when a entity type or ID needs to be recognized from a GraphQL ID
+- Crypto module helping with Saleor authentication, both JWT verification and webhook signature verification - provides a way to manage Saleor issued signatures
 - Marina module - more on that in a later time...
 
 ## Best served with
