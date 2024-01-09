@@ -46,15 +46,15 @@ and navigate to http://127.0.0.1:8000
 
 ### Tests
 
-With the following command you can run tests: 
+To run tests suite use the following command: 
 
 ```
 hatch run test 
 ```
 
-### Code style
+### Code style and linters
 
-This library follows a specific style guide, to achieve the proper format and lint the code the following commands should be used:
+Use the following commands to format the code and lint it for issues:
 
 ```
 hatch run lint:fmt
