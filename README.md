@@ -36,11 +36,15 @@ Install [Hatch](https://hatch.pypa.io/latest/install/#pipx).
 
 ### Documentation
 
-You can deploy a local documentation service, it reloads changes and allow for a live preview of how the documentation will look like after publication:
+1. Run the below command to start a dev server with the documentation site:
 
 ```
 hatch run docs:serve
 ```
+
+Dev server provides a live reload on changes and lets you preview the site after it's published
+
+
 
 and navigate to http://127.0.0.1:8000
 
@@ -64,7 +68,9 @@ hatch run lint:all
 
 ### Build and deploy
 
-This is done by a CI/CD workflow upon the creation of a release but in case of the need for a manual publication of the packager to PyPI you need to build the package archive and publish it. 
+To publish a new version to PyPI, update it's version number in the `pyproject/toml` file and create new github release.
+
+In case whe you need to make a new release without GitHub workflow, use following `hatch` commands:
 
 ```
 hatch build -c

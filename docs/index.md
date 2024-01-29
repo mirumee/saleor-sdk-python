@@ -1,14 +1,18 @@
 # Introduction
 
-Saleor SDK Python is a Python library which purpose is to contain code that is repeated in different Saleor applications.
+Saleor SDK Python is a Python library that implements tools and solutions useful in Saleor application development, including:
 
-You should read [Saleor's Documentation](https://docs.saleor.io/docs/3.x/developer/extending/overview) on the topic to get a grasp on the concepts of the "app framework" Saleor comes with.
+- the `saleor_sdk.crypto` package for working with Saleor's auth.
 
-This SDK is agnostic of any framework, which makes it possible to use in all sorts of web (or otherwise) frameworks and even scripts.
+Before starting, you should familiarize yourself with Saleor's [Extending Saleor](https://docs.saleor.io/docs/3.x/developer/extending/overview) documentation
+and learn basic concepts like apps, webhooks and events.
 
-## What about Python App Framework?
 
-The old [saleor-app-framework-python](https://github.com/mirumee/saleor-app-framework-python) was very opinionated on how an application should be crated. It required FastAPI and in a specific version of it.  
+This SDK is framework agnostic. It can be used with any Python web framework, or without framework as part of a script.
+
+## What about the Python App Framework?
+
+The [saleor-app-framework-python](https://github.com/mirumee/saleor-app-framework-python) has been deprecated and is no longer maintained.
 
 ## Installation
 
