@@ -1,3 +1,24 @@
 header {
     border-bottom: 4px solid var(--md-accent-fg-color);
 }
+
+.md-copyright {
+    width: 100%;
+}
+
+
+.md-copyright .made-with-love{
+    float: right;
+    line-height: 24px;
+}
+
+.md-copyright .made-with-love .footer_mirumee_logo{
+    height: 24px;
+    vertical-align: top;
+    opacity: 0.7;
+}
+
+
+.md-copyright .made-with-love:hover .footer_mirumee_logo{
+    opacity: 1;
+}
